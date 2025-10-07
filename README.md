@@ -197,11 +197,10 @@ COVID19_Data_Exploration/
 
 👨‍💻 Developed by:
 
-**Wahid Vinchenzo**
- 🇧🇩 — from Bangladesh
+### 👥 Collaborators
+- [**Wahid Vinchenzo**](https://github.com/Wahid-vinchenzo) 🇧🇩 — Project Lead, Data & SQL Analysis  
+- [**MiNa Rizk**](https://github.com/MiNa-CS) 🇪🇬 — Visualization & Insight Development
 
-**MiNa Rizk**
- 🇪🇬 — from Egypt
 
 ✨ An international collaboration project combining data analysis, visualization, and teamwork across borders.
 
