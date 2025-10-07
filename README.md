@@ -75,4 +75,141 @@ CREATE TABLE covid_data (
     new_cases INT,
     new_deaths INT
 );
+```
+### 🧮 Step 3: SQL Data Analysis
 
+```
+-- Top 10 countries by confirmed cases
+SELECT country, MAX(confirmed) AS Total_Confirmed
+FROM covid_data
+GROUP BY country
+ORDER BY Total_Confirmed DESC
+LIMIT 10;
+
+-- Death rate per country
+SELECT country,
+       ROUND(MAX(deaths)/MAX(confirmed)*100, 2) AS Death_Rate
+FROM covid_data
+GROUP BY country
+ORDER BY Death_Rate DESC;
+```
+### 🐍 Step 4: Python Data Analysis
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+import plotly.express as px
+import mysql.connector
+
+conn = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='your_password',
+    database='covid_project'
+)
+
+query = "SELECT * FROM covid_data"
+df = pd.read_sql(query, conn)
+```
+### 📊 Step 5: Visualization
+
+```
+# Top 10 countries by confirmed cases
+top_countries = (
+    df.groupby('country')['confirmed']
+    .max()
+    .sort_values(ascending=False)
+    .head(10)
+    .reset_index()
+)
+
+fig = px.bar(top_countries, x='country', y='confirmed',
+             title='Top 10 Countries by Confirmed Cases',
+             color='confirmed', text='confirmed')
+fig.show()
+```
+### 🧠 Step 6: Insights & Conclusion
+
+- India, USA, and Brazil show the highest infection rates
+
+- Death rates vary significantly between regions
+
+- The global trend shows waves of increase & decline in cases
+
+### 🧾 Project Tasks  
+
+| Task              | Description                                   |
+| ----------------- | --------------------------------------------- |
+| ✅ Data Collection | Collect dataset from Kaggle or public sources |
+| ✅ SQL Setup       | Create database and import data               |
+| ✅ Querying        | Write SQL queries for analysis                |
+| ✅ Data Analysis   | Analyze trends with Pandas                    |
+| ✅ Visualization   | Plot charts with Matplotlib & Plotly          |
+| ✅ Reporting       | Summarize key insights and findings           |
+
+### 📈 Expected Outputs
+
+- SQL tables showing top affected countries
+
+- Interactive charts for:
+
+- Global infection trends
+
+- Country-wise infection growth
+
+- Death & recovery rate comparisons
+
+---
+
+### 🚀 Future Improvements
+
+- 🌐 Interactive dashboard using Streamlit / Plotly Dash
+
+- 🤖 Forecasting future cases using ARIMA or LSTM
+
+- 🗺️ Geo-map visualization of country-wise spread
+
+   ---
+
+### 📁 Project Structure
+
+```
+COVID19_Data_Exploration/
+│
+├── dataset/
+│   └── covid_data.csv
+│
+├── sql/
+│   ├── create_table.sql
+│   ├── queries.sql
+│
+├── python/
+│   ├── covid_analysis.py
+│   └── visualization.ipynb
+│
+├── report/
+│   └── COVID19_Data_Exploration_Report.docx
+│
+└── README.md
+```
+---
+
+### 🤝 Collaboration & Credits
+
+👨‍💻 Developed by:
+
+**Wahid Vinchenzo**
+ 🇧🇩 — from Bangladesh
+
+**MiNa Rizk**
+ 🇪🇬 — from Egypt
+
+✨ An international collaboration project combining data analysis, visualization, and teamwork across borders.
+
+### 💬 Contact
+
+If you have suggestions, improvements, or ideas, feel free to connect with us via GitHub!
+
+### 📩 Pull requests and issues are welcome.
+
+### 🏁 License
+This project is open source and available under the MIT License
